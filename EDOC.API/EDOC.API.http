@@ -1,0 +1,31 @@
+@EDOC_API = http://localhost:5245
+
+GET {{EDOC_API}}/health
+Accept: application/json
+
+### Search doctors
+GET {{EDOC_API}}/api/doctors?page=1&pageSize=20
+Accept: application/json
+
+### Register a patient (use a unique email and strong development password)
+POST {{EDOC_API}}/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "patient@example.test",
+  "password": "ReplaceWithStrongPassword1!",
+  "displayName": "Example Patient"
+}
+
+### Login
+POST {{EDOC_API}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "patient@example.test",
+  "password": "ReplaceWithStrongPassword1!"
+}
+
+### Check availability after an administrator provisions a doctor schedule
+GET {{EDOC_API}}/api/doctors/1/slots?date=2026-10-26
+Accept: application/json
